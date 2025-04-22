@@ -39,5 +39,13 @@ export function objectFieldsList(obj1, obj2, obj3) {
   Количество клонов - count.
 */
 export function objectClone(obj, count) {
-    return Array.from({ length: count }, (_, i) => ({ ...obj, id: i }));
+    const clones = [];
+    for (let i = 0; i < count; i++) {
+        const deepCopy = JSON.parse(JSON.stringify(obj));
+        clones.push({
+            ...deepCopy,
+            id: i,
+        });
+    }
+    return clones;
 }
